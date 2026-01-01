@@ -31,7 +31,7 @@ export default function App() {
                 {destinations.map((dest) =>
                     dest.markers.map((m) => (
                         <Marker key={`${dest.id}-${m.id}`} position={m.geocode} icon={icon}>
-                            <Popup minWidth={600}>
+                            <Popup minWidth={650}>
                                 <div style={{ textAlign: "center" }}>
                                     <h3>{m.popUp}</h3>
                                     <small>{dest.date}</small>

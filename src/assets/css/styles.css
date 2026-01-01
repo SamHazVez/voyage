@@ -1,4 +1,51 @@
-* {
+:root {
+  --color-primary: #2c3e50;
+  --color-accent: #3498db;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-bg-light: #f0f0f0;
+  --color-gradient-start: #667eea;
+  --color-gradient-end: #764ba2;
+  
+  --spacing-xs: 0.3rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  
+  --carousel-width-desktop: 600px;
+  --carousel-height-desktop: 360px;
+  --carousel-width-tablet: 90vw;
+  --carousel-max-width-tablet: 400px;
+  --carousel-height-tablet: 240px;
+  --carousel-width-mobile: 85vw;
+  --carousel-max-width-mobile: 300px;
+  --carousel-height-mobile: 180px;
+  
+  --button-size-desktop: 50px;
+  --button-size-tablet: 40px;
+  --button-size-mobile: 35px;
+  --button-font-desktop: 1.8rem;
+  --button-font-tablet: 1.4rem;
+  --button-font-mobile: 1.2rem;
+  
+  --radius-sm: 8px;
+  --radius-md: 2rem;
+  --radius-full: 50%;
+  
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.25);
+  --shadow-ring: 0 0 0 5px rgba(255, 255, 255, 0.5);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
+  
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,47 +57,198 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1em;
-  font-family: sans-serif;
-  color: #333;
-  background-color: #000000;
+  gap: var(--spacing-md);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--color-primary);
+  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #0f0c29);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .leaflet-container {
   height: 90vh;
   width: 90%;
-  border-radius: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  animation: fadeInScale 0.6s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 20px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.leaflet-popup-content h3 {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.leaflet-popup-content small {
+  color: #666;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .cluster-icon {
-  background-color: #333;
-  height: 2em;
-  width: 2em;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+  color: var(--color-white);
+  border-radius: var(--radius-full);
   font-size: 1.2rem;
-  box-shadow: 0 0 0px 5px #fff;
+  font-weight: 700;
+  box-shadow: var(--shadow-ring), var(--shadow-glow);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  width: 100%;
+  padding: var(--spacing-md) 0;
+}
+
+.carousel-image-wrapper {
+  width: var(--carousel-width-desktop);
+  height: var(--carousel-height-desktop);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  background: #f5f7fa;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  cursor: default;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: imageFade 0.3s ease-out;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes imageFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .carousel-button {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  font-size: 1.8rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: var(--button-size-desktop);
+  height: var(--button-size-desktop);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-full);
+  font-size: var(--button-font-desktop);
+  font-weight: 700;
+  color: var(--color-black);
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
 }
 
 .carousel-button:hover {
-  background-color: rgba(255, 255, 255, 1);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.carousel-button:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.carousel-button:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .carousel-image-wrapper {
+    width: var(--carousel-width-tablet);
+    max-width: var(--carousel-max-width-tablet);
+    height: var(--carousel-height-tablet);
+  }
+
+  .carousel-button {
+    width: var(--button-size-tablet);
+    height: var(--button-size-tablet);
+    font-size: var(--button-font-tablet);
+  }
+
+  .carousel-container {
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-image-wrapper {
+    width: var(--carousel-width-mobile);
+    max-width: var(--carousel-max-width-mobile);
+    height: var(--carousel-height-mobile);
+  }
+
+  .carousel-button {
+    width: var(--button-size-mobile);
+    height: var(--button-size-mobile);
+    font-size: var(--button-font-mobile);
+  }
+  
+  .leaflet-container {
+    width: 95%;
+    border-radius: var(--spacing-md);
+  }
 }

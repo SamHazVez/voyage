@@ -12,6 +12,7 @@ Cette application présente mes voyages avec des marqueurs interactifs sur une c
 - **Clustering de Marqueurs** : Regroupement intelligent des marqueurs proches pour une meilleure lisibilité
 - **Galerie Photos** : Carrousel d'images pour chaque destination avec navigation intuitive
 - **Popups Détaillées** : Informations complètes sur chaque lieu visité
+- **Menu Latéral** ⚡ *Ajouté par IA* : Navigation avancée avec recherche, filtres et statistiques
 - **Responsive** : Interface adaptée à tous les écrans
 
 ## 🛠️ Technologies Utilisées
@@ -82,9 +83,11 @@ voyage/
 │   │   └── images/         # Photos des destinations
 │   │       └── italie/     # Photos du voyage en Italie
 │   ├── components/
-│   │   └── ImageCarousel.jsx  # Composant carrousel d'images
+│   │   ├── ImageCarousel.jsx  # Composant carrousel d'images
+│   │   └── SideMenu.jsx       # Menu latéral ⚡ Généré par IA
 │   ├── data/
-│   │   └── destinations.js    # Données des destinations
+│   │   ├── destinations.js    # Données des destinations
+│   │   └── wishlist.js        # Destinations souhaitées
 │   ├── utils/
 │   │   └── imageLoader.js     # Utilitaire de chargement d'images
 │   ├── App.js              # Composant principal
@@ -141,5 +144,11 @@ Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de
 - [OpenStreetMap](https://www.openstreetmap.org/) pour les données cartographiques
 - [Leaflet](https://leafletjs.com/) pour la bibliothèque de cartographie
 - Tous les projets open source qui ont inspiré ce projet
+
+## 🤖 Contributions IA
+
+Certaines fonctionnalités ont été développées avec l'assistance de GitHub Copilot :
+
+- **Menu Latéral** ([SideMenu.jsx](src/components/SideMenu.jsx)) : Composant React complet avec recherche, filtres, statistiques et navigation
 
 ---

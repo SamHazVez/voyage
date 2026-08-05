@@ -20,10 +20,7 @@ export const destinations = [
         id: "france2",
         name: "Paris-Normandie-Vendée-Loire",
         date: "Juillet 2026",
-        markers: [
-            {
-            },
-        ]
+        markers: []
     },
     {
         id: "italie",

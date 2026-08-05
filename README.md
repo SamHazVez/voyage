@@ -12,7 +12,7 @@ Cette application présente mes voyages avec des marqueurs interactifs sur une c
 - **Clustering de Marqueurs** : Regroupement intelligent des marqueurs proches pour une meilleure lisibilité
 - **Galerie Photos** : Carrousel d'images pour chaque destination avec navigation intuitive
 - **Popups Détaillées** : Informations complètes sur chaque lieu visité
-- **Menu Latéral** ⚡ *Ajouté par IA* : Navigation avancée avec recherche, filtres et statistiques
+- **Menu Latéral** *Ajouté par IA* : Navigation avancée avec recherche, filtres et statistiques
 - **Responsive** : Interface adaptée à tous les écrans
 
 ## Technologies Utilisées

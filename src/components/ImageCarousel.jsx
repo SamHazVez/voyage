@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const API_BASE_URL = "https://api.samuelvezeau.ca/api/photos";
 
-export default function ImageCarousel({ destination }) {
+export default function ImageCarousel({ destination, onReady }) {
   const [idx, setIdx] = useState(0);
   const [images, setImages] = useState([]);
   const [hasError, setHasError] = useState(false);
@@ -58,6 +58,12 @@ export default function ImageCarousel({ destination }) {
     };
   }, [destination]);
 
+  useEffect(() => {
+    if (!isLoading && !hasError && images.length > 0 && onReady) {
+      onReady();
+    }
+  }, [hasError, images.length, isLoading, onReady]);
+
   const prev = () => setIdx((currentIndex) => (currentIndex + images.length - 1) % images.length);
   const next = () => setIdx((currentIndex) => (currentIndex + 1) % images.length);
 
@@ -80,6 +86,7 @@ export default function ImageCarousel({ destination }) {
           className="carousel-image"
           loading="lazy"
           decoding="async"
+          onLoad={onReady}
         />
       </div>
 

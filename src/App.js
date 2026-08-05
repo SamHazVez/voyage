@@ -37,11 +37,22 @@ const customWishlistIcon = function (cluster) {
 
 export default function App() {
     const mapRef = useRef(null);
+    const popupRef = useRef(null);
 
-    const recenterMap = (geocode) => {
-        if (mapRef.current) {
-            mapRef.current.panTo(geocode);
-        }
+    const handlePopupOpen = (event) => {
+        popupRef.current = event.popup;
+
+        window.requestAnimationFrame(() => {
+            event.popup.update();
+        });
+    };
+
+    const handlePopupClose = () => {
+        popupRef.current = null;
+    };
+
+    const handleCarouselReady = () => {
+        popupRef.current?.update();
     };
 
     return (
@@ -64,13 +75,16 @@ export default function App() {
                             key={`${dest.id}-${m.id}`}
                             position={m.geocode}
                             icon={icon}
-                            eventHandlers={{ click: () => recenterMap(m.geocode) }}
+                            eventHandlers={{
+                                popupopen: handlePopupOpen,
+                                popupclose: handlePopupClose,
+                            }}
                         >
                             <Popup>
                                 <div style={{ textAlign: "center" }}>
                                     <h3>{m.popUp}</h3>
                                     <small>{dest.date}</small>
-                                    <ImageCarousel destination={m.id} />
+                                    <ImageCarousel destination={m.id} onReady={handleCarouselReady} />
                                 </div>
                             </Popup>
                         </Marker>
@@ -85,7 +99,10 @@ export default function App() {
                             key={`wishlist-${dest.id}-${m.id}`}
                             position={m.geocode}
                             icon={wishlistIcon}
-                            eventHandlers={{ click: () => recenterMap(m.geocode) }}
+                            eventHandlers={{
+                                popupopen: handlePopupOpen,
+                                popupclose: handlePopupClose,
+                            }}
                         >
                             <Popup>
                                 <div style={{ textAlign: "center" }}>

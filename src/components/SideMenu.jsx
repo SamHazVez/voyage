@@ -54,7 +54,7 @@ const SideMenu = ({ destinations, wishlist, onLocationClick, mapRef }) => {
             {/* Menu latéral */}
             <div className={`side-menu ${isOpen ? "open" : "closed"}`}>
                 <div className="menu-header">
-                    <h2>🗺️ Mes Voyages</h2>
+                    <h2>Mes Voyages</h2>
                 </div>
 
                 {/* Statistiques */}

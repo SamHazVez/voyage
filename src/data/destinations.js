@@ -1,13 +1,18 @@
 export const destinations = [
     {
-        id: "palissades",
-        name: "Palissades de Charlevoix et Fjord du Saguenay",
-        date: "Juillet 2026",
+        id: "viaferrata",
+        name: "Via Ferratas",
+        date: "Hiver-Été 2026",
         markers: [
             {
                 id: "palissades",
-                geocode: [0, 0],
+                geocode: [47.8952, -69.99054],
                 popUp: "Palissades de Charlevoix",
+            },
+            {
+                id: "vbn",
+                geocode: [46.90003, -71.81470],
+                popUp: "Vallée Bras du Nord",
             },
         ]
     },

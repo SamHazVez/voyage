@@ -78,6 +78,8 @@ export default function ImageCarousel({ destination }) {
           src={images[idx]}
           alt={`Slide ${idx + 1}`}
           className="carousel-image"
+          loading="lazy"
+          decoding="async"
         />
       </div>
 

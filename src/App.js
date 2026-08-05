@@ -38,6 +38,12 @@ const customWishlistIcon = function (cluster) {
 export default function App() {
     const mapRef = useRef(null);
 
+    const recenterMap = (geocode) => {
+        if (mapRef.current) {
+            mapRef.current.panTo(geocode);
+        }
+    };
+
     return (
         <>
             <SideMenu 
@@ -54,7 +60,12 @@ export default function App() {
             <MarkerClusterGroup chunkedLoading iconCreateFunction={customIcon}>
                 {destinations.map((dest) =>
                     dest.markers.map((m) => (
-                        <Marker key={`${dest.id}-${m.id}`} position={m.geocode} icon={icon}>
+                        <Marker
+                            key={`${dest.id}-${m.id}`}
+                            position={m.geocode}
+                            icon={icon}
+                            eventHandlers={{ click: () => recenterMap(m.geocode) }}
+                        >
                             <Popup>
                                 <div style={{ textAlign: "center" }}>
                                     <h3>{m.popUp}</h3>
@@ -70,7 +81,12 @@ export default function App() {
             <MarkerClusterGroup chunkedLoading iconCreateFunction={customWishlistIcon}>
                 {wishlist.map((dest) =>
                     dest.markers.map((m) => (
-                        <Marker key={`wishlist-${dest.id}-${m.id}`} position={m.geocode} icon={wishlistIcon}>
+                        <Marker
+                            key={`wishlist-${dest.id}-${m.id}`}
+                            position={m.geocode}
+                            icon={wishlistIcon}
+                            eventHandlers={{ click: () => recenterMap(m.geocode) }}
+                        >
                             <Popup>
                                 <div style={{ textAlign: "center" }}>
                                     <h3>{m.popUp}</h3>

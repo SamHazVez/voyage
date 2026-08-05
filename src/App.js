@@ -59,7 +59,7 @@ export default function App() {
                                 <div style={{ textAlign: "center" }}>
                                     <h3>{m.popUp}</h3>
                                     <small>{dest.date}</small>
-                                    <ImageCarousel destination={dest.id} />
+                                    <ImageCarousel destination={m.id} />
                                 </div>
                             </Popup>
                         </Marker>

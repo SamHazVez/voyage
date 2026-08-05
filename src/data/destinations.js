@@ -1,5 +1,26 @@
 export const destinations = [
     {
+        id: "palissades",
+        name: "Palissades de Charlevoix et Fjord du Saguenay",
+        date: "Juillet 2026",
+        markers: [
+            {
+                id: "palissades",
+                geocode: [0, 0],
+                popUp: "Palissades de Charlevoix",
+            },
+        ]
+    },
+    {
+        id: "france2",
+        name: "Paris-Normandie-Vendée-Loire",
+        date: "Juillet 2026",
+        markers: [
+            {
+            },
+        ]
+    },
+    {
         id: "italie",
         name: "Italie",
         date: "Juin 2025",
@@ -375,7 +396,7 @@ export const destinations = [
                 popUp: "Fort Charlotte - Nassau",
             },
             {
-                id: "junkanoobearch",
+                id: "junkanoobeach",
                 geocode: [25.0814, -77.3514],
                 popUp: "Junkanoo Beach - Nassau",
             },

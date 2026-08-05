@@ -6,7 +6,6 @@ import { Icon, divIcon, point } from "leaflet";
 import { destinations } from "./data/destinations";
 import { wishlist } from "./data/wishlist";
 import ImageCarousel from "./components/ImageCarousel";
-import { getMarkerImages } from "./utils/imageLoader";
 import SideMenu from "./components/SideMenu";
 import { useRef } from "react";
 
@@ -60,7 +59,7 @@ export default function App() {
                                 <div style={{ textAlign: "center" }}>
                                     <h3>{m.popUp}</h3>
                                     <small>{dest.date}</small>
-                                    <ImageCarousel images={getMarkerImages(dest.id, m.id)} />
+                                    <ImageCarousel destination={dest.id} />
                                 </div>
                             </Popup>
                         </Marker>

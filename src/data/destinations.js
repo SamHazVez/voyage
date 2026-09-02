@@ -1,7 +1,29 @@
 export const destinations = [
     {
-        id: "viaferrata",
-        name: "Via Ferratas",
+        id: "randofranconia",
+        name: "Franconia ridge",
+        date: "Été 2026",
+        markers: [
+            {
+                id: "montlafayette",
+                geocode: [44.16071, -71.64438],
+                popUp: "Mont Lafayette",
+            },
+            {
+                id: "montlincoln",
+                geocode: [44.14895, -71.64453],
+                popUp: "Mont Lincoln",
+            },
+            {
+                id: "montlittlehaystack",
+                geocode: [44.14062, -71.64480],
+                popUp: "Mont Little Haystack",
+            },
+        ]
+    },
+    {
+        id: "viaferrata2026",
+        name: "Via Ferratas 2026",
         date: "Hiver-Été 2026",
         markers: [
             {
@@ -143,21 +165,6 @@ export const destinations = [
                 id: "chutescarbet",
                 geocode: [16.1167, -61.6500],
                 popUp: "Chutes du Carbet",
-            },
-            {
-                id: "distilleriebologne",
-                geocode: [16.0300, -61.7300],
-                popUp: "Distillerie Bologne",
-            },
-            {
-                id: "maisoncacao",
-                geocode: [16.2667, -61.7167],
-                popUp: "Maison du Cacao",
-            },
-            {
-                id: "parcmamelles",
-                geocode: [16.1333, -61.7167],
-                popUp: "Zoo de Guadeloupe",
             },
             {
                 id: "jardindeshaies",
@@ -396,11 +403,6 @@ export const destinations = [
                 id: "fortcharlotte",
                 geocode: [25.0758, -77.3519],
                 popUp: "Fort Charlotte - Nassau",
-            },
-            {
-                id: "junkanoobeach",
-                geocode: [25.0814, -77.3514],
-                popUp: "Junkanoo Beach - Nassau",
             },
         ],
     },
